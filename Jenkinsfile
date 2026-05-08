@@ -4,7 +4,7 @@ pipeline {
 
     environment {
 
-        IMAGE_NAME = "shivanisable/campusstay"
+        IMAGE_NAME = "anuraj31/campusstay"
 
         DOCKER_CREDENTIALS_ID = "dockerhub-creds"
     }
