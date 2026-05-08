@@ -38,6 +38,14 @@ spec:
         - name: MYSQL_PASSWORD
           value: CampusStay2024
 
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-storage
+
+      volumes:
+      - name: mysql-storage
+        emptyDir: {}
+
 ---
 apiVersion: v1
 kind: Service
