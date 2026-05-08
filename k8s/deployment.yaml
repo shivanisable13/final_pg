@@ -1,1 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
 
+metadata:
+  name: campusstay-app
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: campusstay-app
+
+  template:
+    metadata:
+      labels:
+        app: campusstay-app
+
+    spec:
+      containers:
+      - name: campusstay-app
+
+        image: shivanisable/campusstay:latest
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 80
+
+        env:
+        - name: DB_HOST
+          value: mysql-service
+
+        - name: DB_NAME
+          value: campusstay
+
+        - name: DB_USER
+          value: campusstay_user
+
+        - name: DB_PASS
+          value: CampusStay2024
+
+        volumeMounts:
+        - mountPath: /var/www/html/uploads
+          name: uploads-storage
+
+      volumes:
+      - name: uploads-storage
+        emptyDir: {}
